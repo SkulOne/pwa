@@ -7,10 +7,16 @@ import {ServiceWorkerModule} from '@angular/service-worker';
 import {environment} from '../environments/environment';
 import {HttpClientModule} from '@angular/common/http';
 import {WeatherClientService} from './services/weather-client.service';
+import {TuiRootModule} from '@taiga-ui/core';
+import {TuiToggleModule} from '@taiga-ui/kit';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { HeaderComponent } from './header/header.component';
+import {SharedModule} from './shared/shared.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -22,6 +28,11 @@ import {WeatherClientService} from './services/weather-client.service';
       registrationStrategy: 'registerWhenStable:30000'
     }),
     HttpClientModule,
+    TuiRootModule,
+    TuiToggleModule,
+    FormsModule,
+    ReactiveFormsModule,
+    SharedModule,
   ],
   providers: [WeatherClientService],
   bootstrap: [AppComponent]

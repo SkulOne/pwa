@@ -7,8 +7,8 @@ import {WeatherClientService} from './services/weather-client.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit{
-  title = 'phoenix-weather-pwa';
+export class AppComponent implements OnInit {
+  title = 'Weather PWA';
   data: any;
 
   constructor(updates: SwUpdate, private weatherClient: WeatherClientService) {

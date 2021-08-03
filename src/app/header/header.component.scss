@@ -1,0 +1,13 @@
+@import '~@taiga-ui/core/styles/taiga-ui-local';
+
+:host {
+  display: flex;
+  justify-content: space-between;
+  @include shadow(1);
+  @include inset-border(bottom, dark);
+  *{
+    margin: .5rem;
+    display: flex;
+    align-items: center;
+  }
+}
