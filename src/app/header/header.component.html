@@ -1,5 +1,7 @@
 <div class="logo tui-text_h5">Weather PWA</div>
-<app-elderly *ngIf="themeForm.get('toggle').value"></app-elderly>
-<form [formGroup]="themeForm">
-  <tui-toggle formControlName="toggle" size="l"></tui-toggle>
-</form>
+<app-elderly *ngIf="themeForm.get('enable').value"></app-elderly>
+<div>
+  <form [formGroup]="themeForm">
+    <tui-toggle formControlName="enable" size="l"></tui-toggle>
+  </form>
+</div>

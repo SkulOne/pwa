@@ -7,6 +7,7 @@ import {NightThemeComponent} from './components/night-theme/night-theme.componen
   imports: [
     CommonModule
   ],
+  providers: [],
   exports: [NightThemeComponent],
 })
 export class SharedModule {

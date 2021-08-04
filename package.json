@@ -21,6 +21,8 @@
     "@angular/platform-browser-dynamic": "~11.2.7",
     "@angular/router": "~11.2.7",
     "@angular/service-worker": "~11.2.7",
+    "@datorama/akita": "6.2.1",
+    "@ngneat/until-destroy": "^8.1.1",
     "@taiga-ui/cdk": "^2.13.1",
     "@taiga-ui/core": "^2.13.1",
     "@taiga-ui/icons": "^2.13.1",

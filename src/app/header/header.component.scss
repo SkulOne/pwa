@@ -6,7 +6,7 @@
   @include shadow(1);
   @include inset-border(bottom, dark);
   *{
-    margin: .5rem;
+    margin: .5rem 1rem;
     display: flex;
     align-items: center;
   }
