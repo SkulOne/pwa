@@ -1,0 +1,4 @@
+<span class="tui-text_h6" *ngIf="locationName$ | async; let locationName">{{locationName.city}}, {{locationName.state}}
+  , {{locationName.country}}</span>
+<span class='coords' *ngIf="coords$ | async; let coords">{{coords.latitude}}, {{coords.longitude}}</span>
+

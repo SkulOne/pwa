@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {SwUpdate} from '@angular/service-worker';
-import {WeatherClientService} from './services/weather-client.service';
 
 @Component({
   selector: 'app-root',
@@ -11,14 +10,12 @@ export class AppComponent implements OnInit {
   title = 'Weather PWA';
   data: any;
 
-  constructor(updates: SwUpdate, private weatherClient: WeatherClientService) {
-    updates.available.subscribe(() => {
-      updates.activateUpdate().then(() => document.location.reload());
-    });
-  }
+  constructor(private updates: SwUpdate) {}
 
   ngOnInit(): void {
-    this.data = this.weatherClient.getWeather();
+    this.updates.available.subscribe(() => {
+      this.updates.activateUpdate().then(() => document.location.reload());
+    });
   }
 
 }

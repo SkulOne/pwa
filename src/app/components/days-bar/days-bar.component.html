@@ -1,0 +1,6 @@
+<tui-island class="wrapper">
+  <tui-island [hoverable]="true" *ngFor="let day of weekWeather$|async" class="card" (click)="selectDay(day)">
+    <span>{{day.dt | date:'EEEE'}}</span>
+    <span>{{day.temp.day | number:'1.0-0'}}</span>
+  </tui-island>
+</tui-island>

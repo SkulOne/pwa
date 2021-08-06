@@ -1,0 +1,35 @@
+@import '../../node_modules/@taiga-ui/core/styles/taiga-ui-local';
+
+tui-root {
+  height: 100%;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%          ;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 1rem;
+  flex: 1 1 auto;
+
+  .location, .weather {
+    display: flex;
+  }
+
+  .location {
+    justify-content: space-between;
+  }
+
+  .weather {
+    flex-direction: column;
+    align-self: baseline;
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+  }
+}

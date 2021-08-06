@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
-import {NightThemeService} from '../shared/components/night-theme/state/night-theme.service';
+import {NightThemeService} from '../../shared/components/night-theme/state/night-theme.service';
 import {UntilDestroy} from '@ngneat/until-destroy';
-import {NightThemeQuery} from '../shared/components/night-theme/state/night-theme.query';
+import {NightThemeQuery} from '../../shared/components/night-theme/state/night-theme.query';
 
 @UntilDestroy()
 @Component({
@@ -15,15 +15,18 @@ export class HeaderComponent implements OnInit {
     enable: new FormControl(false),
   });
 
-  constructor(private themeService: NightThemeService, private themeQuery: NightThemeQuery) {}
+  constructor(private themeService: NightThemeService, private themeQuery: NightThemeQuery) {
+  }
 
   ngOnInit(): void {
-    this.themeForm.get('enable').valueChanges.subscribe((value) => {
+    const themeFormControl = this.themeForm.get('enable');
+
+    themeFormControl.valueChanges.subscribe((value) => {
       this.themeService.changeTheme(value);
     });
 
     this.themeQuery.selectNightTheme.subscribe((enable) => {
-      this.themeForm.get('enable').setValue(enable);
+      themeFormControl.setValue(enable);
     });
   }
 }

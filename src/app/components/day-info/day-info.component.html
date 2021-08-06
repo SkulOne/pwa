@@ -1,0 +1,19 @@
+<div *ngIf="currentDayWeather$ | async; let dayWeather" class="wrapper">
+  <span class="tui-text_h3">{{dayWeather.dt | date:'d  MMMM' | uppercase}}</span>
+  <div class="weather">
+    <div class="weather__temp">{{+dayWeather.temp | number:'1.0-0'}}</div>
+    <ul class="tui-text_h6">
+      <li>{{dayWeather.weather.description}}</li>
+<!--      TODO: Если останутся силы - поправь тип-->
+      <li>Ощущается как: {{+dayWeather.feels_like | number:'1.0-0'}}</li>
+      <li>Влажность: {{dayWeather.humidity | number:'1.0-0'}}%</li>
+      <li>Давление: {{dayWeather.pressure/100 | number:'1.0-0'}} Па</li>
+      <li>Скорость ветра: {{dayWeather.wind_speed}} м/с</li>
+      <li>Облачность: {{dayWeather.clouds}}%</li>
+      <li>Видимость: {{dayWeather.visibility}} м/с</li>
+      <li>Индекс УФ: {{dayWeather.uvi}}</li>
+      <li>Рассвет: {{dayWeather.sunrise|date:'H:mm'}}</li>
+      <li>Закат: {{dayWeather.sunset|date:'H:mm'}}</li>
+    </ul>
+  </div>
+</div>

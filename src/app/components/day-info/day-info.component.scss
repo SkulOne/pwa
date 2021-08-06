@@ -1,0 +1,27 @@
+:host{
+  height: 100%;
+}
+
+.wrapper{
+height: 100%;
+}
+
+.content{
+  display: flex;
+}
+
+ul{
+  position: absolute;
+  top: 20%;
+  right: 20%;
+}
+
+.weather{
+  display: flex;
+  height: 100%;
+  position: relative;
+align-items: center;
+  &__temp{
+    font-size: 400px;
+  }
+}

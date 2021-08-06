@@ -31,13 +31,14 @@
     {
       "name": "weather-api",
       "urls": [
-        "http://api.weatherapi.com/v1/**"
+        "https://api.openweathermap.org/data/2.5/**",
+        "https://nominatim.openstreetmap.org/**"
       ],
       "cacheConfig": {
         "strategy": "freshness",
         "maxSize": 20,
         "maxAge": "1h",
-        "timeout": "5s"
+        "timeout": "1s"
       }
     }
   ]
