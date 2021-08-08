@@ -6,7 +6,7 @@ import {AppComponent} from './app.component';
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {environment} from '../environments/environment';
 import {HttpClientModule} from '@angular/common/http';
-import {TuiModeModule, TuiRootModule} from '@taiga-ui/core';
+import {TuiButtonModule, TuiDialogModule, TuiErrorModule, TuiModeModule, TuiRootModule} from '@taiga-ui/core';
 import {TuiInputModule, TuiIslandModule, TuiToggleModule} from '@taiga-ui/kit';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HeaderComponent} from './components/header/header.component';
@@ -18,6 +18,8 @@ import {DaysBarComponent} from './components/days-bar/days-bar.component';
 import {AkitaNgDevtools} from '@datorama/akita-ngdevtools';
 import {registerLocaleData} from '@angular/common';
 import localeRu from '@angular/common/locales/ru';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { HistorySearchComponent } from './components/history-search/history-search.component';
 
 registerLocaleData(localeRu);
 
@@ -26,17 +28,16 @@ registerLocaleData(localeRu);
     AppComponent,
     HeaderComponent,
     LocationInfoComponent,
-    DayInfoComponent,
     LocationSearchComponent,
     DaysBarComponent,
+    DayInfoComponent,
+    HistorySearchComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
-      // Register the ServiceWorker as soon as the app is stable
-      // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
     }),
     HttpClientModule,
@@ -48,10 +49,18 @@ registerLocaleData(localeRu);
     SharedModule,
     TuiModeModule,
     TuiIslandModule,
-    environment.production ? [] : AkitaNgDevtools.forRoot()
+    TuiRootModule,
+    BrowserAnimationsModule,
+    TuiDialogModule,
+    environment.production ? [] : AkitaNgDevtools.forRoot(),
+    TuiButtonModule,
+    TuiErrorModule
   ],
   providers: [{provide: LOCALE_ID, useValue: 'ru-RU'}],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    DayInfoComponent,
+  ]
 })
 export class AppModule {
 }

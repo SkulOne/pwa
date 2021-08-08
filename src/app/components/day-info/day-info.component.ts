@@ -1,11 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {WeatherService} from './state/weather.service';
-import {LocationQuery} from '../location-info/state/location.query';
+import {Component, Input, OnInit} from '@angular/core';
 import {UntilDestroy} from '@ngneat/until-destroy';
-import {filter, switchMap} from 'rxjs/operators';
-import {WeatherQuery} from './state/weather.query';
-import {Observable} from 'rxjs';
-import {CurrentWeather} from './state/weather.model';
+import {CurrentWeather, DailyWeather, FeelsLike, Temp} from './state/weather.model';
 
 @UntilDestroy()
 @Component({
@@ -13,20 +8,14 @@ import {CurrentWeather} from './state/weather.model';
   templateUrl: './day-info.component.html',
   styleUrls: ['./day-info.component.scss']
 })
-export class DayInfoComponent implements OnInit {
+export class DayInfoComponent {
 
-  currentDayWeather$: Observable<CurrentWeather>;
+  @Input() day: CurrentWeather | DailyWeather;
 
-  constructor(private weatherService: WeatherService, private locationQuery: LocationQuery, private weatherQuery: WeatherQuery) {
+  constructor() {
   }
 
-  ngOnInit(): void {
-    this.locationQuery.coords$.pipe(
-      filter((value) => !!value.coords),
-      switchMap((coords) => this.weatherService.get(coords.coords))
-    ).subscribe();
-
-    this.currentDayWeather$ = this.weatherQuery.currentDay$;
+  getTemp(temp: number | Temp): number {
+    return typeof temp === 'number' ? temp : temp.day;
   }
-
 }

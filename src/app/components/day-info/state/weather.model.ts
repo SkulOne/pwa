@@ -1,15 +1,10 @@
 import {guid, ID} from '@datorama/akita';
 
-export function createWeather(params: Partial<DailyWeather>): Weather {
+export function createWeather(params: CurrentWeather | DailyWeather): DailyWeather {
   return {
     id: guid(),
     ...params,
-  } as Weather;
-}
-
-
-export interface Weather extends DailyWeather {
-  id: ID;
+  } as DailyWeather;
 }
 
 export interface WeatherResponse {
@@ -22,17 +17,16 @@ export interface WeatherResponse {
 }
 
 interface WeatherAbstract {
+  id: ID;
   clouds: number;
   dew_point: number;
   dt: number | Date;
-  feels_like: FeelsLike;
   humidity: number;
   pressure: number;
   sunrise: number | Date;
   sunset: number | Date;
-  temp: Temp;
   uvi: number;
-  weather: WeatherAssets;
+  weather: WeatherAssets | string;
   wind_deg: number;
   wind_gust: number;
   wind_speed: number;
@@ -40,12 +34,16 @@ interface WeatherAbstract {
 
 export interface CurrentWeather extends WeatherAbstract {
   visibility: number;
+  feels_like: number;
+  temp: number;
 }
 
 export interface DailyWeather extends WeatherAbstract {
   moon_phase: number;
   moonrise: number | Date;
   moonset: number | Date;
+  feels_like: FeelsLike;
+  temp: Temp;
 }
 
 export interface WeatherAssets {

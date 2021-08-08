@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {WeatherQuery} from '../day-info/state/weather.query';
 import {DailyWeather} from '../day-info/state/weather.model';
 import {WeatherService} from '../day-info/state/weather.service';
@@ -8,14 +8,11 @@ import {WeatherService} from '../day-info/state/weather.service';
   templateUrl: './days-bar.component.html',
   styleUrls: ['./days-bar.component.scss']
 })
-export class DaysBarComponent implements OnInit {
+export class DaysBarComponent {
 
   weekWeather$ = this.weatherQuery.weekWeather$;
 
   constructor(private weatherQuery: WeatherQuery, private weatherService: WeatherService) {
-  }
-
-  ngOnInit(): void {
   }
 
   selectDay(day: DailyWeather): void {

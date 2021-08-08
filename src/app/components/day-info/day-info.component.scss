@@ -1,27 +1,44 @@
-:host{
-  height: 100%;
+:host-context(tui-dialog) {
+  .weather {
+    justify-content: space-between;
+
+    &__temp {
+      font-size: 14rem;
+      line-height: 15rem;
+    }
+  }
 }
 
-.wrapper{
-height: 100%;
-}
-
-.content{
-  display: flex;
-}
-
-ul{
-  position: absolute;
-  top: 20%;
-  right: 20%;
-}
-
-.weather{
+.weather {
   display: flex;
   height: 100%;
   position: relative;
-align-items: center;
-  &__temp{
-    font-size: 400px;
+  align-items: center;
+
+  &__temp {
+    font-size: 20rem;
+    line-height: 20rem;
+    position: relative;
+
+    &:after {
+      content: '°';
+      font-size: 6rem;
+      line-height: 5rem;
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .weather {
+    align-items: flex-start;
+    justify-content: space-between;
+
+    &__temp {
+      font-size: 10rem;
+      line-height: 11rem;
+    }
   }
 }

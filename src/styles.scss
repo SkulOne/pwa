@@ -2,3 +2,14 @@
 body{
   background: var(--tui-base-01);
 }
+
+@media screen and (max-width: 1024px){
+   :root{
+     font-size: 12px;
+   }
+}
+@media screen and (max-width: 769px){
+   :root{
+     font-size: 10px;
+   }
+}

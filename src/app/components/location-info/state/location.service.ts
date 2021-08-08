@@ -1,10 +1,10 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {Coords, LocationState, LocationStore} from './location.store';
+import {LocationState, LocationStore} from './location.store';
 import {Observable} from 'rxjs';
-import {map, switchMap, take} from 'rxjs/operators';
+import {filter, map, switchMap, take} from 'rxjs/operators';
 import {FeatureCollection, Point} from 'geojson';
-import {City} from '../../../core/interfaces/city.interface';
+import {City, Coords} from './city.interface';
 
 @Injectable({providedIn: 'root'})
 export class LocationService {
@@ -18,7 +18,15 @@ export class LocationService {
     this.http.get<FeatureCollection<Point, City>>(`https://nominatim.openstreetmap.org/?city=${cityName}&addressdetails=1&format=geojson&limit=1`)
       .pipe(take(1))
       .subscribe((value) => {
-        this.locationStore.update(this.convertGeoJsonToLocationState(value));
+        if (value.features?.length) {
+          const location = this.convertGeoJsonToLocationState(value);
+          if (location?.name.city === cityName) {
+            this.locationStore.setError(null);
+            this.locationStore.update(location);
+            return;
+          }
+        }
+        this.locationStore.setError('Город не найден');
       });
   }
 
@@ -74,7 +82,7 @@ export class LocationService {
         take(1),
       )
       .subscribe((value) => {
-        this.locationStore.update({name: value.name, coords: value.coords});
+        this.setLocationByCityName(value.name.city);
       });
   }
 }

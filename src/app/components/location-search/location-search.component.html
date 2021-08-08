@@ -1,5 +1,6 @@
 <form [formGroup]="searchForm">
-  <tui-input class="b-form" formControlName="search">
+  <tui-input class="search-input" formControlName="search">
     Введите город
   </tui-input>
+  <tui-error [error]="cityNotFound$ | async"></tui-error>
 </form>

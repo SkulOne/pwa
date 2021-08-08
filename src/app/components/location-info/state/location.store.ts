@@ -1,16 +1,6 @@
 import {Injectable} from '@angular/core';
 import {EntityState, EntityStore, StoreConfig} from '@datorama/akita';
-
-export interface Coords {
-  latitude: number;
-  longitude: number;
-}
-
-export interface LocationName {
-  city: string;
-  state: string;
-  country: string;
-}
+import {Coords, LocationName} from './city.interface';
 
 export interface LocationState extends EntityState {
   coords: Coords;
@@ -29,7 +19,7 @@ const initialStore: LocationState = {
 export class LocationStore extends EntityStore<LocationState> {
 
   constructor() {
-    super(initialStore);
+    super();
   }
 
 }

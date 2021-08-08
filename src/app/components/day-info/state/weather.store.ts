@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {EntityState, EntityStore, StoreConfig} from '@datorama/akita';
-import {CurrentWeather, DailyWeather, Weather} from './weather.model';
+import {CurrentWeather, DailyWeather} from './weather.model';
 
-export interface WeatherState extends EntityState<Weather> {
+export interface WeatherState extends EntityState<DailyWeather> {
   selectedDay: DailyWeather;
   currentDay: CurrentWeather;
 }

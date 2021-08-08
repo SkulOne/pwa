@@ -23,3 +23,15 @@ export interface Address {
   region: string;
   state: string;
 }
+
+
+export interface Coords {
+  latitude: number;
+  longitude: number;
+}
+
+export interface LocationName {
+  city: string;
+  state: string;
+  country: string;
+}

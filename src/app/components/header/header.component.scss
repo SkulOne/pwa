@@ -5,7 +5,8 @@
   justify-content: space-between;
   @include shadow(1);
   @include inset-border(bottom, dark);
-  *{
+  height: 5rem;
+  & > * {
     margin: .5rem 1rem;
     display: flex;
     align-items: center;

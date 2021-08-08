@@ -1,15 +1,20 @@
 <tui-root>
   <div class="wrapper">
     <app-header></app-header>
-    <div class="content">
-      <div class="location">
-        <app-location-info></app-location-info>
-        <app-location-search></app-location-search>
-      </div>
+    <div class="main-content">
       <div class="weather">
-        <app-day-info></app-day-info>
+        <app-location-info></app-location-info>
+        <app-day-info [day]="currentDay$|async"></app-day-info>
         <app-days-bar></app-days-bar>
+      </div>
+      <div class="location">
+        <app-location-search></app-location-search>
+        <app-history-search></app-history-search>
       </div>
     </div>
   </div>
 </tui-root>
+
+<ng-template #dialog>
+  <app-day-info [day]="selectedDay$ | async"></app-day-info>
+</ng-template>

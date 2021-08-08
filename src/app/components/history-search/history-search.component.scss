@@ -1,0 +1,8 @@
+.cities-list{
+  display: flex;
+  flex-direction: column-reverse;
+
+  &__item:not(:first-child) {
+    margin-bottom: .5rem;
+  }
+}
